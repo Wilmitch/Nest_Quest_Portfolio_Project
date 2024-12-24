@@ -2,6 +2,9 @@
 
 Nest Quest is a web application project that facilitates clients on house hunting and property leasing
 
+######### AUTHOR ###########
+SE. WILFRED MAINA MWANGI
+
 ########### Project Description ##############
 
 The Nest Quest project is designed and crafted to assist individuals navigate the complexities of the rental market and achieving the important goal of landing the ideal rental home.
