@@ -17,6 +17,7 @@ app.use("/auth", authRoutes)
 const PORT = 5001;
 mongoose
     .connect(process.env.MONGO_URL, {
+        dbName: "Nest_Quest",
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
