@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        Email: {
+        email: {
             type: String,
             required: true,
             unique: true,
@@ -22,6 +22,26 @@ const UserSchema = new mongoose.Schema(
         profileImagePath: {
             type: String,
             default: "",
+        },
+        viewedList: {
+            type: Array,
+            default: [],
+        },
+        wishList: {
+            type: Array,
+            default: [],
+        },
+        propertyList: {
+            type: Array,
+            default: [],
+        },
+        reaservationList: {
+            type: Array,
+            default: [],
         }
-    }
+    },
+    { timestamps: true }
 )
+
+const User = mongoose.model("User", UserSchema)
+module.exports = User
