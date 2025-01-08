@@ -1,0 +1,15 @@
+{
+  "name": "nest_quest_portfolio_project",
+  "version": "1.0.0",
+  "description": "Nest Quest is a web application project that facilitates clients on house hunting and property leasing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
