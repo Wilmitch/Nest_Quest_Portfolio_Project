@@ -17,15 +17,13 @@ export default function CreateListing() {
     imageUrls: [],
     name: "",
     description: "",
-    address: "",
-    type: "rent",
+    location: "",
+    deposit: false,
+    parking: false,
     bedrooms: 1,
     bathrooms: 1,
-    regularPrice: 50,
-    discountPrice: 0,
-    offer: false,
-    parking: false,
-    furnished: false,
+    rentAmount: 100,
+    deposit: 0,
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -69,14 +67,15 @@ export default function CreateListing() {
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          const progress = 
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(`Upload is ${progress}% done`);
         },
         (error) => {
           reject(error);
         },
         () => {
-          getDownloadUrl(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             resolve(downloadURL);
           });
         }
@@ -200,7 +199,7 @@ export default function CreateListing() {
                 id="deposit"
                 className="w-5"
                 onChange={handleChange}
-                value={formData.type === "deposit"}
+                value={formData.deposit}
               />
               <span>Deposit</span>
             </div>
@@ -255,7 +254,7 @@ export default function CreateListing() {
               />
               <div className="flex items-center flex-col">
                 <p>Rent Amount</p>
-                {formData.deposit}
+                {formData.rentAmount}
                 <span className="text-xs">(Kshs / Month)</span>
               </div>
             </div>
@@ -305,8 +304,8 @@ export default function CreateListing() {
           <p className="text-red-600 text-sm">
             {imageUploadError && imageUploadError}
           </p>
-          {formData.imageUrls.length > 0 &&
-            formData.imageUrls.map((url) => {
+          {
+            formData.imageUrls.length > 0 && formData.imageUrls.map((url, index) => (
               <div
                 key={url}
                 className="justify-between flex p-3 border items-center"
@@ -323,8 +322,8 @@ export default function CreateListing() {
                 >
                   Delete
                 </button>
-              </div>;
-            })}
+              </div>
+            ))}
           <button
             disabled={loading || uploading}
             className="bg-gray-800 p-3 text-white rounded-lg uppercase hover:opacity-90 disabled:opacity-70"
