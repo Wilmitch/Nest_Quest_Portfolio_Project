@@ -1,7 +1,16 @@
 import { useSelector } from "react-redux";
 import { useRef, useState, useEffect } from "react";
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart } from '../redux/user/userSlice';
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signOutUserStart,
+} from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -18,9 +27,9 @@ export default function Profile() {
     try {
       dispatch(updateUserStart());
       const res = await fetch(`/api/user/update/${currentUser._id}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -40,7 +49,7 @@ export default function Profile() {
     try {
       dispatch(deleteUserStart());
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       const data = await res.json();
       if (data.success === false) {
@@ -49,14 +58,14 @@ export default function Profile() {
       }
       dispatch(deleteUserSuccess(data));
     } catch (error) {
-      dispatch(deleteUserFailure(error.message))
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
   const handleSignOut = async () => {
     try {
-      dispatch(signOutUserStart())
-      const res = await fetch('/api/auth/signout');
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
@@ -66,7 +75,7 @@ export default function Profile() {
     } catch (error) {
       dispatch(deleteUserFailure(data.message));
     }
-  }
+  };
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="my-7 text-3xl font-semibold text-center text-green-700">
@@ -105,18 +114,32 @@ export default function Profile() {
         />
         <button
           className="text-green-500 bg-gray-900 rounded-lg hover:opacity-80 
-        uppercase p-3 disabled:opacity-60" disabled={loading}
+        uppercase p-3 disabled:opacity-60"
+          disabled={loading}
         >
-          {loading ? 'Loading...' : 'Update'}
+          {loading ? "Loading..." : "Update"}
         </button>
+        <Link
+          to={"/create-listing"}
+          className="rounded-lg text-center bg-green-900 text-white p-3 hover:opacity-90"
+        >
+          Create Listing
+        </Link>
       </form>
-      <p className="mt-5 text-red-800">{error ? error : ''}</p>
+      <p className="mt-5 text-red-800">{error ? error : ""}</p>
       <p className="text-green-600 mt-5">
-        {updateSuccess ? 'User updated successfully!' : ''}
+        {updateSuccess ? "User updated successfully!" : ""}
       </p>
       <div className="mt-5 flex justify-between">
-        <span onClick={handleDeleteUser} className="cursor-pointer text-red-500">Delete Account?</span>
-        <span onClick={handleSignOut} className="cursor-pointer text-red-500">Sign Out?</span>
+        <span
+          onClick={handleDeleteUser}
+          className="cursor-pointer text-red-500"
+        >
+          Delete Account?
+        </span>
+        <span onClick={handleSignOut} className="cursor-pointer text-red-500">
+          Sign Out?
+        </span>
       </div>
       {/*<p className="mt-5 text-red-800">{error ? error : ''}</p>
       <p className="text-green-600 mt-5">
