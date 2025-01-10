@@ -23,7 +23,7 @@ export default function CreateListing() {
     bedrooms: 1,
     bathrooms: 1,
     rentAmount: 100,
-    deposit: 0,
+    deposit: 1,
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -91,18 +91,7 @@ export default function CreateListing() {
   };
 
   const handleChange = (e) => {
-    if (e.target.id === "sale" || e.target.id === "rent") {
-      setFormData({
-        ...formData,
-        type: e.target.id,
-      });
-    }
-
-    if (
-      e.target.id === "parking" ||
-      e.target.id === "furnished" ||
-      e.target.id === "offer"
-    ) {
+    if (e.target.id === "deposit" || e.target.id === "parking"){
       setFormData({
         ...formData,
         [e.target.id]: e.target.checked,
@@ -125,9 +114,7 @@ export default function CreateListing() {
     e.preventDefault();
     try {
       if (formData.imageUrls.length < 1)
-        return setError("You must upload at least one image");
-      if (+formData.regularPrice < +formData.discountPrice)
-        return setError("Discount price must be lower than regular price");
+        return setError("Upload at least two images");
       setLoading(true);
       setError(false);
       const res = await fetch("/api/listing/create", {
@@ -176,8 +163,6 @@ export default function CreateListing() {
             className="border p-3 rounded-lg"
             required
             id="description"
-            maxLength={60}
-            minLength={10}
             onChange={handleChange}
             value={formData.description}
           />
@@ -187,8 +172,6 @@ export default function CreateListing() {
             className="border p-3 rounded-lg"
             required
             id="location"
-            maxLength={60}
-            minLength={10}
             onChange={handleChange}
             value={formData.location}
           />
@@ -253,8 +236,7 @@ export default function CreateListing() {
                 value={formData.rentAmount}
               />
               <div className="flex items-center flex-col">
-                <p>Rent Amount</p>
-                {formData.rentAmount}
+                <p>Rent Amount</p> 
                 <span className="text-xs">(Kshs / Month)</span>
               </div>
             </div>
@@ -262,7 +244,7 @@ export default function CreateListing() {
               <input
                 type="number"
                 id="deposit"
-                min="1"
+                min="0"
                 max="1000000"
                 required
                 className="p-3 border rounded-lg border-gray-400"

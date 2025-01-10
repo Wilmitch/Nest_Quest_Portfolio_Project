@@ -240,7 +240,7 @@ export default function Profile() {
           Sign Out?
         </span>
       </div>
-      <button onClick={handleShowListings} className="text-green-700 w-full">
+      <button onClick={handleShowListings} className="text-green-700 w-full hover:underline">
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
@@ -265,7 +265,7 @@ export default function Profile() {
                 />
               </Link>
               <Link
-                className="text-slate-700 font-semibold  hover:underline truncate flex-1"
+                className="text-gray-700 font-semibold  hover:underline truncate flex-1"
                 to={`/listing/${listing._id}`}
               >
                 <p>{listing.name}</p>
