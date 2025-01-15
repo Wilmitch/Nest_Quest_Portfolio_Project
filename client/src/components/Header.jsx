@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
-
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
       setSearchTerm(searchTermFromUrl);
@@ -44,7 +44,9 @@ export default function Header() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          <button>
           <FaSearch className="text-gray-700" />
+          </button>
         </form>
         <ul className="flex gap-4">
           <Link to="/">
@@ -55,6 +57,11 @@ export default function Header() {
           <Link to="/about">
             <li className="hidden sm:inline text-gray-800 hover:underline">
               About
+            </li>
+          </Link>
+          <Link to="/contact">
+            <li className="hidden sm:inline text-gray-800 hover:underline">
+              Contact
             </li>
           </Link>
           <Link to="/profile">
