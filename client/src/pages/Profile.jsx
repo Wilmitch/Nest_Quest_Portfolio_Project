@@ -240,7 +240,10 @@ export default function Profile() {
           Sign Out?
         </span>
       </div>
-      <button onClick={handleShowListings} className="text-green-700 w-full hover:underline">
+      <button
+        onClick={handleShowListings}
+        className="text-green-700 w-full hover:underline"
+      >
         Show Listings
       </button>
       <p className="text-red-700 mt-5">
