@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteUser } from "../../../../api/controllers/user.controller";
+//import { deleteUser } from "../../../../api/controllers/user.controller";
 // import { useReducer } from "react";
 
 const initialState = {
