@@ -25,7 +25,7 @@ export default function Header() {
   }, [location.search]);
 
   return (
-    <header className="bg-slate-300 shadow-md">
+    <header className="bg-blue-300 shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
@@ -40,7 +40,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent focus:outline-none w-24 sm:w-64"
+            className="bg-transparent focus:outline-none w-24 sm:w-60"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -50,17 +50,17 @@ export default function Header() {
         </form>
         <ul className="flex gap-4">
           <Link to="/">
-            <li className="hidden sm:inline text-gray-800 hover:underline">
+            <li className="text-gray-800 hover:underline">
               Home
             </li>
           </Link>
           <Link to="/about">
-            <li className="hidden sm:inline text-gray-800 hover:underline">
+            <li className="text-gray-800 hover:underline">
               About
             </li>
           </Link>
           <Link to="/contact">
-            <li className="hidden sm:inline text-gray-800 hover:underline">
+            <li className="text-gray-800 hover:underline">
               Contact
             </li>
           </Link>
