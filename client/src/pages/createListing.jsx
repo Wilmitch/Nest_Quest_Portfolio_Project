@@ -162,7 +162,7 @@ export default function CreateListing() {
         <div className="flex flex-col gap-4 flex-1">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Name and Address"
             className="border p-3 rounded-lg"
             required
             id="name"
