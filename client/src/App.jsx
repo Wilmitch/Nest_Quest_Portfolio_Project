@@ -12,6 +12,7 @@ import CreateListing from "./pages/createListing";
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
 import Search from './pages/Search';
+import HowTo from "./pages/HowTo";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/how' element={<HowTo />} />
         <Route path='/listing/:listingId' element={<Listing />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
