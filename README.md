@@ -88,7 +88,7 @@ Securing and settling - Completing rental applications while providing requireme
       - Property search and filtering algorithms.
       - User authentication and authorization mechanisms.
   - ## Error Handling
-          * Test how the backend handles errors and provides appropriate responses.
+      - Test how the backend handles errors and provides appropriate responses.
 - ## Testing
   - ## Integration Tests
     - Test the integration between frontend and backend components.
