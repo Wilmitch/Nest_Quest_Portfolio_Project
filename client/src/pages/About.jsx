@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -26,7 +26,7 @@ export default function About() {
         With a design thats meant for both tenants and landlords, each of these
         users can access information relevant to them and that will benefit them
         in either home quest or finding ideal tenants for their properties. We
-        believe that renting a property should be an exciting and rewarding
+        believe that renting a property and finding a home should be an exciting and rewarding
         experience, and we are dedicated to making that a reality for each and
         every one of our users.
       </p>
